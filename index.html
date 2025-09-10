@@ -1,17 +1,52 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Book Store</title>
-
-    <link rel="stylesheet" href="style.css">
-
-
-    <script src="./script.js"></script>
-    <script src="./db.js"></script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>My Bookstore</title>
+  <link rel="icon" type="image/png" href="./img/book-image.png">
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    
+  <header>
+    <img src="./img/book-image.png" alt="logo" class="logo">
+    <h1>My Bookstore</h1>
+  </header>
+
+  <main>
+    <div id="book-list"></div>
+    <button id="load-more">Weitere laden</button>
+
+    <section id="favorites-section">
+      <h2>⭐ Favoriten</h2>
+      <div id="favorite-list"></div>
+    </section>
+  </main>
+
+  <footer>
+    <img src="./img/book-image.png" alt="logo" class="logo">
+    <h1>My Bookstore</h1>
+  </footer>
+
+  <template id="book-template">
+    <div class="book-card">
+      <h2 class="book-title"></h2>
+      <p class="book-author"></p>
+      <p class="book-price"></p>
+      <div class="actions">
+        <button class="like-btn">❤️ <span class="like-count"></span></button>
+        <button class="fav-btn">⭐ Favorit</button>
+      </div>
+      <div class="comments"></div>
+      <form class="comment-form">
+        <input type="text" name="name" placeholder="Your name" required>
+        <input type="text" name="comment" placeholder="Your comment" required>
+        <button type="submit">Add Comment</button>
+      </form>
+    </div>
+  </template>
+
+  <script src="db.js"></script>
+  <script src="script.js"></script>
 </body>
 </html>

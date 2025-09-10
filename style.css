@@ -1,0 +1,180 @@
+/* Verhindert horizontales Scrollen */
+html, body {
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden;
+}
+
+/* sorgt dafür, dass Elemente nicht über den Bildschirm hinausragen */
+* {
+  box-sizing: border-box;
+}
+
+
+
+
+body {
+  font-family: system-ui, sans-serif;
+  margin: 0;
+  background: #f9f9f9;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+header, footer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  padding: 15px;
+  background: #fff;
+  border-bottom: 1px solid #ddd;
+}
+
+footer {
+  border-top: 1px solid #ddd;
+  border-bottom: none;
+  margin-top: auto;
+}
+
+.logo {
+  width: 32px;
+  height: 32px;
+}
+
+main {
+  max-width: 1440px;
+  width: 100%;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+h1 {
+  margin: 0;
+  font-size: 1.5rem;
+}
+
+#book-list {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 20px;
+}
+
+@media (min-width: 768px) {
+  #book-list {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (min-width: 1024px) {
+  #book-list {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+.book-card {
+  background: white;
+  border: 1px solid #ddd;
+  border-radius: 12px;
+  padding: 16px;
+  box-shadow: 0 2px 4px rgba(0,0,0,.1);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.book-title {
+  margin: 0;
+  font-size: 1.2rem;
+}
+
+.book-author {
+  color: #666;
+  font-size: 0.9rem;
+}
+
+.book-price {
+  font-weight: bold;
+  margin: 8px 0;
+}
+
+.actions {
+  display: flex;
+  gap: 10px;
+  margin: 10px 0;
+}
+
+.like-btn, .fav-btn {
+  border: none;
+  background: none;
+  font-size: 1rem;
+  cursor: pointer;
+}
+
+.like-btn.liked {
+  color: red;
+}
+
+.fav-btn.favorited {
+  color: gold;
+}
+
+.comments {
+  margin-top: 10px;
+  padding-left: 12px;
+}
+
+.comment-form {
+  margin-top: 10px;
+  display: flex;
+  gap: 5px;
+  flex-wrap: wrap;
+}
+
+.comment-form input {
+  flex: 1;
+  padding: 6px;
+}
+
+#load-more {
+  display: block;
+  margin: 30px auto;
+  padding: 10px 16px;
+  border: none;
+  border-radius: 8px;
+  background: #007bff;
+  color: white;
+  font-size: 1rem;
+  cursor: pointer;
+}
+
+#favorites-section {
+  margin-top: 40px;
+}
+
+#favorite-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+#favorite-list div {
+  background: #fff8dc;
+  border: 1px solid #ddd;
+  padding: 6px 10px;
+  border-radius: 8px;
+  font-size: 0.9rem;
+}
+
+@media (max-width: 600px) {
+  .comment-form {
+    flex-direction: column;
+  }
+}
+
+@media (max-width: 320px) {
+  body {
+    font-size: 14px;
+  }
+}
