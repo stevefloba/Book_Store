@@ -24,44 +24,45 @@ function setupBookCard(clone, book) {
     clone.querySelector(".book-price").textContent = book.price.toFixed(2) + " €";
 
     // Likes
-    const likeBtn = clone.querySelector(".like-btn");
-    const likeCount = clone.querySelector(".like-count");
-    likeCount.textContent = book.likes;
-    if (book.liked) likeBtn.classList.add("liked");
-    likeBtn.addEventListener("click", () => toggleLike(book, likeBtn, likeCount));
+    const likeButton = clone.querySelector(".like-btn");
+    const likeCountElement = clone.querySelector(".like-count");
+    likeCountElement.textContent = book.likes;
+    if (book.liked) likeButton.classList.add("liked");
+    likeButton.addEventListener("click", () => toggleLike(book, likeButton, likeCountElement));
 
     // Favoriten
-    const favBtn = clone.querySelector(".fav-btn");
-    if (book.favorite) favBtn.classList.add("favorited");
-    favBtn.addEventListener("click", () => toggleFavorite(book, favBtn));
+    const favoriteButton = clone.querySelector(".fav-btn");
+    if (book.favorite) favoriteButton.classList.add("favorited");
+    favoriteButton.addEventListener("click", () => toggleFavorite(book, favoriteButton));
 
     // Kommentare
     const commentsContainer = clone.querySelector(".comments");
     renderComments(commentsContainer, book.comments);
 
-    const form = clone.querySelector(".comment-form");
-    form.addEventListener("submit", e => {
-        e.preventDefault();
-        addComment(book, form, commentsContainer);
+    const commentForm = clone.querySelector(".comment-form");
+    commentForm.addEventListener("submit", event => {
+        event.preventDefault();
+        addComment(book, commentForm, commentsContainer);
     });
 }
 
 function renderComments(container, comments) {
     container.innerHTML = "";
-    comments.forEach(c => {
-        const p = document.createElement("p");
-        p.textContent = `${c.name}: ${c.comment}`;
-        container.appendChild(p);
+    comments.forEach(comment => {
+        const commentParagraph = document.createElement("p");
+        commentParagraph.textContent = `${comment.name}: ${comment.comment}`;
+        container.appendChild(commentParagraph);
     });
 }
 
 function renderFavorites() {
-    const container = document.getElementById("favorite-list");
-    container.innerHTML = "";
-    books.filter(b => b.favorite).forEach(fav => {
-        const div = document.createElement("div");
-        div.textContent = `${fav.name} (${fav.author})`;
-        container.appendChild(div);
+    const favoritesContainer = document.getElementById("favorite-list");
+    favoritesContainer.innerHTML = "";
+
+    books.filter(book => book.favorite).forEach(favoriteBook => {
+        const favoriteItem = document.createElement("div");
+        favoriteItem.textContent = `${favoriteBook.name} (${favoriteBook.author})`;
+        favoritesContainer.appendChild(favoriteItem);
     });
 }
 

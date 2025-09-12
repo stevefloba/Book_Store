@@ -44,22 +44,22 @@ function saveState() {
 }
 
 function loadState() {
-  const data = localStorage.getItem("booksState");
-  if (!data) return;
+  const storedData = localStorage.getItem("booksState");
+  if (!storedData) return;
 
-  const savedBooks = JSON.parse(data);
-  const map = new Map(savedBooks.map(b => [b.id, b]));
+  const savedBooks = JSON.parse(storedData);
+  const savedBooksMap = new Map(savedBooks.map(savedBook => [savedBook.id, savedBook])); // wandelt Buch in Tupel (id, objekt)
 
-  books = books.map(b => {
-    if (map.has(b.id)) {
-      return { ...b, ...map.get(b.id) };
+  books = books.map(originalBook => {
+    if (savedBooksMap.has(originalBook.id)) {
+      return { ...originalBook, ...savedBooksMap.get(originalBook.id) }; // nimm alle Eigenschaften von originalBook (Kurzform von if ... else)
     }
-    return b;
+    return originalBook;
   });
 }
 
 function assignIds() {
-  books.forEach((b, index) => {
-    if (!b.id) b.id = index + 1;
+  books.forEach((book, index) => {
+    if (!book.id) book.id = index + 1;
   });
 }
